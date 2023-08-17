@@ -28,16 +28,16 @@ int main(int argc, char** argv)
 
 	if (vm.count("help"))
 	{
-		cout << desc << endl;
+		std::cout << desc << std::endl;
 		return 1;
 	}
 
 	po::notify(vm);
 
     // Load the configuration and data
-    int step = vm["agentNum"].as<int>;
-    std::string arr_file = vm["agents"].as<std::string>;
-    std::string result_file = vm["statistic"].as<std::string>;
+    int step = vm["agentNum"].as<int>();
+    std::string arr_file = vm["agents"].as<std::string>();
+    std::string result_file = vm["statistic"].as<std::string>();
 
 
     std::string CONFIG_PATH = "./data/";
