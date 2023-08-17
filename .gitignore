@@ -1,0 +1,14 @@
+.vscode
+build
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+*mp4
+Makefile
+AIMPBS
+.cache
+debug.txt
+output
+result*
+result
+visualize

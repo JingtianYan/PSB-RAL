@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<CPLEXSolution version="1.2">
+ <header
+   problemName="IloCplex"
+   objectiveValue="47.538171873616534"
+   solutionTypeValue="1"
+   solutionTypeString="basic"
+   solutionStatusValue="1"
+   solutionStatusString="optimal"
+   solutionMethodString="dual"
+   primalFeasible="1"
+   dualFeasible="1"
+   simplexIterations="0"
+   writeLevel="1"/>
+ <quality
+   epRHS="9.9999999999999995e-07"
+   epOpt="9.9999999999999995e-07"
+   maxPrimalInfeas="0"
+   maxDualInfeas="0"
+   maxPrimalResidual="1.0467726457765586e-11"
+   maxDualResidual="0"
+   maxX="44.889785001457213"
+   maxPi="0"
+   maxSlack="99952.653339459706"
+   maxRedCost="14.59866697113037"
+   kappa="1"/>
+ <linearConstraints>
+  <constraint index="0" status="BS" slack="99952.653339459706" dual="0"/>
+  <constraint index="1" status="BS" slack="-2.3869795029440866e-15" dual="-0"/>
+  <constraint index="2" status="BS" slack="99952.461828126383" dual="0"/>
+ </linearConstraints>
+ <variables>
+  <variable index="0" status="LL" value="44.889785001457213" reducedCost="1"/>
+  <variable index="1" status="LL" value="0.066666666666666666" reducedCost="14.59866697113037"/>
+ </variables>
+</CPLEXSolution>

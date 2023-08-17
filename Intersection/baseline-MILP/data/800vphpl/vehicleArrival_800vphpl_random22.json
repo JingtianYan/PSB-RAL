@@ -1,0 +1,1518 @@
+{
+    "0": {
+        "arrivalTime": 0.46,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 0,
+        "lane": 3,
+        "importance": 1
+    },
+    "1": {
+        "arrivalTime": 0.85,
+        "trajectory": [
+            "NWR_0",
+            "NWR_1"
+        ],
+        "id": 1,
+        "lane": 4,
+        "importance": 1
+    },
+    "2": {
+        "arrivalTime": 0.12,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 2,
+        "lane": 6,
+        "importance": 2
+    },
+    "3": {
+        "arrivalTime": 1.26,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 3,
+        "lane": 2,
+        "importance": 1
+    },
+    "4": {
+        "arrivalTime": 2.49,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 4,
+        "lane": 5,
+        "importance": 1
+    },
+    "5": {
+        "arrivalTime": 3.63,
+        "trajectory": [
+            "WEL_0",
+            "WEL_1",
+            "WEL_2",
+            "WEL_3",
+            "WEL_4",
+            "WEL_5",
+            "WEL_6",
+            "WEL_7"
+        ],
+        "id": 5,
+        "lane": 1,
+        "importance": 1
+    },
+    "6": {
+        "arrivalTime": 3.76,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 6,
+        "lane": 6,
+        "importance": 1
+    },
+    "7": {
+        "arrivalTime": 3.38,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 7,
+        "lane": 5,
+        "importance": 1
+    },
+    "8": {
+        "arrivalTime": 3.79,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 8,
+        "lane": 6,
+        "importance": 1
+    },
+    "9": {
+        "arrivalTime": 3.31,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 9,
+        "lane": 2,
+        "importance": 1
+    },
+    "10": {
+        "arrivalTime": 4.85,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 10,
+        "lane": 4,
+        "importance": 1
+    },
+    "11": {
+        "arrivalTime": 5.16,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 11,
+        "lane": 3,
+        "importance": 1
+    },
+    "12": {
+        "arrivalTime": 7.8100000000000005,
+        "trajectory": [
+            "SER_0",
+            "SER_1"
+        ],
+        "id": 12,
+        "lane": 6,
+        "importance": 1
+    },
+    "13": {
+        "arrivalTime": 9.05,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 13,
+        "lane": 2,
+        "importance": 1
+    },
+    "14": {
+        "arrivalTime": 10.04,
+        "trajectory": [
+            "WSR_0",
+            "WSR_1"
+        ],
+        "id": 14,
+        "lane": 0,
+        "importance": 1
+    },
+    "15": {
+        "arrivalTime": 10.59,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 15,
+        "lane": 7,
+        "importance": 1
+    },
+    "16": {
+        "arrivalTime": 11.33,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 16,
+        "lane": 2,
+        "importance": 1
+    },
+    "17": {
+        "arrivalTime": 11.9,
+        "trajectory": [
+            "WNL_0",
+            "WNL_1",
+            "WNL_2",
+            "WNL_3",
+            "WNL_4",
+            "WNL_5",
+            "WNL_6",
+            "WNL_7"
+        ],
+        "id": 17,
+        "lane": 1,
+        "importance": 1
+    },
+    "18": {
+        "arrivalTime": 12.37,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 18,
+        "lane": 0,
+        "importance": 1
+    },
+    "19": {
+        "arrivalTime": 14.67,
+        "trajectory": [
+            "ENR_0",
+            "ENR_1"
+        ],
+        "id": 19,
+        "lane": 2,
+        "importance": 1
+    },
+    "20": {
+        "arrivalTime": 15.42,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 20,
+        "lane": 5,
+        "importance": 1
+    },
+    "21": {
+        "arrivalTime": 16.82,
+        "trajectory": [
+            "NEL_0",
+            "NEL_1",
+            "NEL_2",
+            "NEL_3",
+            "NEL_4",
+            "NEL_5",
+            "NEL_6",
+            "NEL_7"
+        ],
+        "id": 21,
+        "lane": 5,
+        "importance": 1
+    },
+    "22": {
+        "arrivalTime": 16.33,
+        "trajectory": [
+            "NWR_0",
+            "NWR_1"
+        ],
+        "id": 22,
+        "lane": 4,
+        "importance": 1
+    },
+    "23": {
+        "arrivalTime": 16.27,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 23,
+        "lane": 5,
+        "importance": 1
+    },
+    "24": {
+        "arrivalTime": 18.25,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 24,
+        "lane": 4,
+        "importance": 2
+    },
+    "25": {
+        "arrivalTime": 20.68,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 25,
+        "lane": 3,
+        "importance": 1
+    },
+    "26": {
+        "arrivalTime": 20.02,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 26,
+        "lane": 3,
+        "importance": 1
+    },
+    "27": {
+        "arrivalTime": 20.91,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 27,
+        "lane": 6,
+        "importance": 2
+    },
+    "28": {
+        "arrivalTime": 20.1,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 28,
+        "lane": 7,
+        "importance": 1
+    },
+    "29": {
+        "arrivalTime": 20.22,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 29,
+        "lane": 6,
+        "importance": 1
+    },
+    "30": {
+        "arrivalTime": 20.6,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 30,
+        "lane": 5,
+        "importance": 1
+    },
+    "31": {
+        "arrivalTime": 21.64,
+        "trajectory": [
+            "SER_0",
+            "SER_1"
+        ],
+        "id": 31,
+        "lane": 6,
+        "importance": 1
+    },
+    "32": {
+        "arrivalTime": 22.28,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 32,
+        "lane": 7,
+        "importance": 1
+    },
+    "33": {
+        "arrivalTime": 26.53,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 33,
+        "lane": 0,
+        "importance": 1
+    },
+    "34": {
+        "arrivalTime": 27.87,
+        "trajectory": [
+            "SER_0",
+            "SER_1"
+        ],
+        "id": 34,
+        "lane": 6,
+        "importance": 1
+    },
+    "35": {
+        "arrivalTime": 29.41,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 35,
+        "lane": 7,
+        "importance": 1
+    },
+    "36": {
+        "arrivalTime": 30.03,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 36,
+        "lane": 2,
+        "importance": 1
+    },
+    "37": {
+        "arrivalTime": 30.76,
+        "trajectory": [
+            "SWL_0",
+            "SWL_1",
+            "SWL_2",
+            "SWL_3",
+            "SWL_4",
+            "SWL_5",
+            "SWL_6",
+            "SWL_7"
+        ],
+        "id": 37,
+        "lane": 7,
+        "importance": 1
+    },
+    "38": {
+        "arrivalTime": 30.2,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 38,
+        "lane": 6,
+        "importance": 2
+    },
+    "39": {
+        "arrivalTime": 30.07,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 39,
+        "lane": 5,
+        "importance": 1
+    },
+    "40": {
+        "arrivalTime": 30.33,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 40,
+        "lane": 2,
+        "importance": 1
+    },
+    "41": {
+        "arrivalTime": 30.52,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 41,
+        "lane": 7,
+        "importance": 2
+    },
+    "42": {
+        "arrivalTime": 30.78,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 42,
+        "lane": 7,
+        "importance": 1
+    },
+    "43": {
+        "arrivalTime": 31.54,
+        "trajectory": [
+            "SWL_0",
+            "SWL_1",
+            "SWL_2",
+            "SWL_3",
+            "SWL_4",
+            "SWL_5",
+            "SWL_6",
+            "SWL_7"
+        ],
+        "id": 43,
+        "lane": 7,
+        "importance": 2
+    },
+    "44": {
+        "arrivalTime": 31.69,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 44,
+        "lane": 0,
+        "importance": 1
+    },
+    "45": {
+        "arrivalTime": 31.13,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 45,
+        "lane": 4,
+        "importance": 2
+    },
+    "46": {
+        "arrivalTime": 31.99,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 46,
+        "lane": 3,
+        "importance": 1
+    },
+    "47": {
+        "arrivalTime": 32.91,
+        "trajectory": [
+            "WEL_0",
+            "WEL_1",
+            "WEL_2",
+            "WEL_3",
+            "WEL_4",
+            "WEL_5",
+            "WEL_6",
+            "WEL_7"
+        ],
+        "id": 47,
+        "lane": 1,
+        "importance": 1
+    },
+    "48": {
+        "arrivalTime": 33.63,
+        "trajectory": [
+            "WNL_0",
+            "WNL_1",
+            "WNL_2",
+            "WNL_3",
+            "WNL_4",
+            "WNL_5",
+            "WNL_6",
+            "WNL_7"
+        ],
+        "id": 48,
+        "lane": 1,
+        "importance": 1
+    },
+    "49": {
+        "arrivalTime": 33.04,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 49,
+        "lane": 0,
+        "importance": 1
+    },
+    "50": {
+        "arrivalTime": 36.03,
+        "trajectory": [
+            "NEL_0",
+            "NEL_1",
+            "NEL_2",
+            "NEL_3",
+            "NEL_4",
+            "NEL_5",
+            "NEL_6",
+            "NEL_7"
+        ],
+        "id": 50,
+        "lane": 5,
+        "importance": 1
+    },
+    "51": {
+        "arrivalTime": 37.3,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 51,
+        "lane": 3,
+        "importance": 1
+    },
+    "52": {
+        "arrivalTime": 38.51,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 52,
+        "lane": 5,
+        "importance": 2
+    },
+    "53": {
+        "arrivalTime": 38.35,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 53,
+        "lane": 0,
+        "importance": 1
+    },
+    "54": {
+        "arrivalTime": 40.72,
+        "trajectory": [
+            "WSR_0",
+            "WSR_1"
+        ],
+        "id": 54,
+        "lane": 0,
+        "importance": 1
+    },
+    "55": {
+        "arrivalTime": 42.18,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 55,
+        "lane": 3,
+        "importance": 1
+    },
+    "56": {
+        "arrivalTime": 42.91,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 56,
+        "lane": 0,
+        "importance": 1
+    },
+    "57": {
+        "arrivalTime": 43.08,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 57,
+        "lane": 4,
+        "importance": 1
+    },
+    "58": {
+        "arrivalTime": 43.03,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 58,
+        "lane": 6,
+        "importance": 2
+    },
+    "59": {
+        "arrivalTime": 43.73,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 59,
+        "lane": 7,
+        "importance": 1
+    },
+    "60": {
+        "arrivalTime": 44.42,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 60,
+        "lane": 6,
+        "importance": 1
+    },
+    "61": {
+        "arrivalTime": 44.27,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 61,
+        "lane": 5,
+        "importance": 2
+    },
+    "62": {
+        "arrivalTime": 45.04,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 62,
+        "lane": 5,
+        "importance": 1
+    },
+    "63": {
+        "arrivalTime": 45.46,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 63,
+        "lane": 0,
+        "importance": 1
+    },
+    "64": {
+        "arrivalTime": 46.65,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 64,
+        "lane": 7,
+        "importance": 1
+    },
+    "65": {
+        "arrivalTime": 47.88,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 65,
+        "lane": 0,
+        "importance": 1
+    },
+    "66": {
+        "arrivalTime": 47.83,
+        "trajectory": [
+            "SWL_0",
+            "SWL_1",
+            "SWL_2",
+            "SWL_3",
+            "SWL_4",
+            "SWL_5",
+            "SWL_6",
+            "SWL_7"
+        ],
+        "id": 66,
+        "lane": 7,
+        "importance": 1
+    },
+    "67": {
+        "arrivalTime": 47.78,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 67,
+        "lane": 7,
+        "importance": 1
+    },
+    "68": {
+        "arrivalTime": 47.39,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 68,
+        "lane": 7,
+        "importance": 2
+    },
+    "69": {
+        "arrivalTime": 47.13,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 69,
+        "lane": 5,
+        "importance": 1
+    },
+    "70": {
+        "arrivalTime": 48.28,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 70,
+        "lane": 4,
+        "importance": 1
+    },
+    "71": {
+        "arrivalTime": 48.79,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 71,
+        "lane": 2,
+        "importance": 1
+    },
+    "72": {
+        "arrivalTime": 48.22,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 72,
+        "lane": 7,
+        "importance": 1
+    },
+    "73": {
+        "arrivalTime": 49.95,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 73,
+        "lane": 2,
+        "importance": 1
+    },
+    "74": {
+        "arrivalTime": 49.89,
+        "trajectory": [
+            "NSR_0",
+            "NSR_1",
+            "NSR_2",
+            "NSR_3",
+            "NSR_4",
+            "NSR_5",
+            "NSR_6",
+            "NSR_7"
+        ],
+        "id": 74,
+        "lane": 4,
+        "importance": 1
+    },
+    "75": {
+        "arrivalTime": 49.06,
+        "trajectory": [
+            "WER_0",
+            "WER_1",
+            "WER_2",
+            "WER_3",
+            "WER_4",
+            "WER_5",
+            "WER_6",
+            "WER_7"
+        ],
+        "id": 75,
+        "lane": 0,
+        "importance": 2
+    },
+    "76": {
+        "arrivalTime": 52.79,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 76,
+        "lane": 2,
+        "importance": 1
+    },
+    "77": {
+        "arrivalTime": 53.43,
+        "trajectory": [
+            "SER_0",
+            "SER_1"
+        ],
+        "id": 77,
+        "lane": 6,
+        "importance": 1
+    },
+    "78": {
+        "arrivalTime": 53.28,
+        "trajectory": [
+            "SNL_0",
+            "SNL_1",
+            "SNL_2",
+            "SNL_3",
+            "SNL_4",
+            "SNL_5",
+            "SNL_6",
+            "SNL_7"
+        ],
+        "id": 78,
+        "lane": 7,
+        "importance": 1
+    },
+    "79": {
+        "arrivalTime": 53.62,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 79,
+        "lane": 6,
+        "importance": 1
+    },
+    "80": {
+        "arrivalTime": 53.59,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 80,
+        "lane": 2,
+        "importance": 1
+    },
+    "81": {
+        "arrivalTime": 53.24,
+        "trajectory": [
+            "WEL_0",
+            "WEL_1",
+            "WEL_2",
+            "WEL_3",
+            "WEL_4",
+            "WEL_5",
+            "WEL_6",
+            "WEL_7"
+        ],
+        "id": 81,
+        "lane": 1,
+        "importance": 1
+    },
+    "82": {
+        "arrivalTime": 53.03,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 82,
+        "lane": 3,
+        "importance": 2
+    },
+    "83": {
+        "arrivalTime": 54.91,
+        "trajectory": [
+            "WNL_0",
+            "WNL_1",
+            "WNL_2",
+            "WNL_3",
+            "WNL_4",
+            "WNL_5",
+            "WNL_6",
+            "WNL_7"
+        ],
+        "id": 83,
+        "lane": 1,
+        "importance": 1
+    },
+    "84": {
+        "arrivalTime": 54.5,
+        "trajectory": [
+            "NWR_0",
+            "NWR_1"
+        ],
+        "id": 84,
+        "lane": 4,
+        "importance": 1
+    },
+    "85": {
+        "arrivalTime": 56.81,
+        "trajectory": [
+            "NEL_0",
+            "NEL_1",
+            "NEL_2",
+            "NEL_3",
+            "NEL_4",
+            "NEL_5",
+            "NEL_6",
+            "NEL_7"
+        ],
+        "id": 85,
+        "lane": 5,
+        "importance": 1
+    },
+    "86": {
+        "arrivalTime": 56.22,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 86,
+        "lane": 5,
+        "importance": 1
+    },
+    "87": {
+        "arrivalTime": 56.24,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 87,
+        "lane": 5,
+        "importance": 2
+    },
+    "88": {
+        "arrivalTime": 57.71,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 88,
+        "lane": 6,
+        "importance": 1
+    },
+    "89": {
+        "arrivalTime": 57.27,
+        "trajectory": [
+            "WEL_0",
+            "WEL_1",
+            "WEL_2",
+            "WEL_3",
+            "WEL_4",
+            "WEL_5",
+            "WEL_6",
+            "WEL_7"
+        ],
+        "id": 89,
+        "lane": 1,
+        "importance": 1
+    },
+    "90": {
+        "arrivalTime": 58.71,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 90,
+        "lane": 5,
+        "importance": 1
+    },
+    "91": {
+        "arrivalTime": 59.18,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 91,
+        "lane": 3,
+        "importance": 1
+    },
+    "92": {
+        "arrivalTime": 60.01,
+        "trajectory": [
+            "EWR_0",
+            "EWR_1",
+            "EWR_2",
+            "EWR_3",
+            "EWR_4",
+            "EWR_5",
+            "EWR_6",
+            "EWR_7"
+        ],
+        "id": 92,
+        "lane": 2,
+        "importance": 1
+    },
+    "93": {
+        "arrivalTime": 60.74,
+        "trajectory": [
+            "NSL_0",
+            "NSL_1",
+            "NSL_2",
+            "NSL_3",
+            "NSL_4",
+            "NSL_5",
+            "NSL_6",
+            "NSL_7"
+        ],
+        "id": 93,
+        "lane": 5,
+        "importance": 1
+    },
+    "94": {
+        "arrivalTime": 61.54,
+        "trajectory": [
+            "WSR_0",
+            "WSR_1"
+        ],
+        "id": 94,
+        "lane": 0,
+        "importance": 1
+    },
+    "95": {
+        "arrivalTime": 61.7,
+        "trajectory": [
+            "NWR_0",
+            "NWR_1"
+        ],
+        "id": 95,
+        "lane": 4,
+        "importance": 1
+    },
+    "96": {
+        "arrivalTime": 62.76,
+        "trajectory": [
+            "EWL_0",
+            "EWL_1",
+            "EWL_2",
+            "EWL_3",
+            "EWL_4",
+            "EWL_5",
+            "EWL_6",
+            "EWL_7"
+        ],
+        "id": 96,
+        "lane": 3,
+        "importance": 1
+    },
+    "97": {
+        "arrivalTime": 62.22,
+        "trajectory": [
+            "WSR_0",
+            "WSR_1"
+        ],
+        "id": 97,
+        "lane": 0,
+        "importance": 1
+    },
+    "98": {
+        "arrivalTime": 63.4,
+        "trajectory": [
+            "SNR_0",
+            "SNR_1",
+            "SNR_2",
+            "SNR_3",
+            "SNR_4",
+            "SNR_5",
+            "SNR_6",
+            "SNR_7"
+        ],
+        "id": 98,
+        "lane": 6,
+        "importance": 2
+    },
+    "99": {
+        "arrivalTime": 65.7,
+        "trajectory": [
+            "NWR_0",
+            "NWR_1"
+        ],
+        "id": 99,
+        "lane": 4,
+        "importance": 1
+    }
+}
