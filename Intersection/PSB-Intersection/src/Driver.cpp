@@ -38,13 +38,9 @@ int main(int argc, char** argv)
     int step = vm["agentNum"].as<int>();
     std::string arr_file = vm["agents"].as<std::string>();
     std::string result_file = vm["statistic"].as<std::string>();
-
-
     std::string CONFIG_PATH = "./data/";
     std::string graph_file = CONFIG_PATH + "intro_graph_3.json";
     std::string pdf_ile = CONFIG_PATH + "pairDistance_3.json";
-    // std::string arr_file = CONFIG_PATH + "vehicleArrival500vphpl.json";
-
     std::shared_ptr<Instance> instance_ptr = std::make_shared<Instance>(step, graph_file, pdf_ile, arr_file);
 
     // Start planning

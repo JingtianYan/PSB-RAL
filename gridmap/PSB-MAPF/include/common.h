@@ -13,6 +13,8 @@
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include "conflict.h"
+#include <numeric>
 
 using boost::heap::pairing_heap;
 using boost::heap::compare;
@@ -40,18 +42,10 @@ using std::string;
 
 #define INF 10000.0
 
-#define MAX_TIMESTEP INT_MAX / 2
-#define MAX_COST INT_MAX / 2
-#define MAX_NODES INT_MAX / 2
-#define MAX_NUM_STATS 4000
 
 #define WINDOWS_SIZE 6.0
 #define REPLAN_SIZE 4.0
 
-// #define WINDOWS_SIZE INF
-// #define REPLAN_SIZE INF
-
-#define TIME_RARIO 1000000
 #define CONTROL_POINTS_NUM 30
 
 typedef std::chrono::high_resolution_clock Time;
@@ -64,7 +58,6 @@ struct PathEntry
     double arrival_time = 0; // arrival time of the head of the vehicle
     double leaving_time_tail = 0; // leaving time of the tail of the vehicle;
     double cost;
-	// bool single = false;
 	int mdd_width = 0;  // TODO:: Myabe this can be deleted as we always build/look for MDDs when we classify conflicts
 
 	bool is_single() const
@@ -78,20 +71,6 @@ typedef vector<PathEntry> Path;
 std::ostream& operator<<(std::ostream& os, const Path& path);
 
 bool isSamePath(const Path& p1, const Path& p2);
-
-// Only for three-tuples of std::hash-able types for simplicity.
-// You can of course template this struct to allow other hash functions
-/*struct three_tuple_hash {
-    template <class T1, class T2, class T3>
-    std::size_t operator () (const std::tuple<T1, T2, T3> &p) const {
-        auto h1 = std::hash<T1>{}(get<0>(p));
-        auto h2 = std::hash<T2>{}(get<1>(p));
-        auto h3 = std::hash<T3>{}(get<2>(p));
-        // Mainly for demonstration purposes, i.e. works but is overly simple
-        // In the real world, use sth. like boost.hash_combine
-        return h1 ^ h2 ^ h3;
-    }
-};*/
 
 struct TimeInterval
 {

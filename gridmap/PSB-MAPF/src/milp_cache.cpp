@@ -12,9 +12,6 @@ bool CacheEntry::IsWithinKey(EntryKey query_key)
         for(unsigned int i = 0; i < query_key.traj.size(); i++) {
             if (query_key.interval[i].first < keys.interval[i].first ||
                 query_key.interval[i].second > keys.interval[i].second) {
-                    // printf("CacheEntry::IsWithinKey out of the range. Query: %f, %f; Key: %f, %f!\n",
-                    //     query_key.interval[i].first, query_key.interval[i].second, keys.interval[i].first,
-                    //     keys.interval[i].second);
                     flag = false;
                     break;
                 }
@@ -32,9 +29,6 @@ bool CacheEntry::IsEqual(EntryKey query_key)
         for(unsigned int i = 0; i < query_key.traj.size(); i++) {
             if (query_key.interval[i].first != keys.interval[i].first ||
                 query_key.interval[i].second != keys.interval[i].second) {
-                    // printf("CacheEntry::IsWithinKey out of the range. Query: %f, %f; Key: %f, %f!\n",
-                    //     query_key.interval[i].first, query_key.interval[i].second, keys.interval[i].first,
-                    //     keys.interval[i].second);
                     flag = false;
                     break;
                 }
@@ -70,13 +64,6 @@ bool CacheMILP::InsertEntry(
     if (cache_table.size() >= cache_size) {
         cache_table.pop_front();
     }
-    // printf("Success Buffer size is: %ld\n", cache_table.size());
-    
-    // for (int i = 0; i < new_path.size(); i++) {
-    //     ;
-    // }
-    // std::pair<double, double> val;
-    // new_entry.keys.push_back(val);
     return true;
 }
 
@@ -90,12 +77,6 @@ bool CacheMILP::InsertEntry(std::vector<std::shared_ptr<Node>> &new_path, double
     if (cache_table.size() >= cache_size) {
         cache_table.pop_front();
     }
-    // printf("Fail Buffer size is: %ld\n", cache_table.size());
-    // for (int i = 0; i < new_path.size(); i++) {
-    //     ;
-    // }
-    // std::pair<double, double> val;
-    // new_entry.keys.push_back(val);
     return true;
 }
 
@@ -120,8 +101,6 @@ bool CacheMILP::FindEntry(std::vector<std::shared_ptr<Node>> &new_path, double i
     PathToKey(new_path, init_speed, query_key);
     for(CacheEntry tmp_entry: cache_table) {
         if (tmp_entry.IsWithinKey(query_key)) {
-            // printf("Find the fail key:\n");
-            // ShowEntry(tmp_entry);
             return true;
         }
     }
@@ -139,8 +118,6 @@ bool CacheMILP::RetriveEntry(
     PathToKey(new_path, init_speed, query_key);
     for(CacheEntry tmp_entry: cache_table) {
         if (tmp_entry.IsEqual(query_key)) {
-            // printf("Find the success key:\n");
-            // ShowEntry(tmp_entry);
             tmp_solution = tmp_entry.bezier_val;
             result_path = tmp_entry.path_val;
             return true;
@@ -150,20 +127,6 @@ bool CacheMILP::RetriveEntry(
     return false;
 }
 
-// bool CacheMILP::FindEqualEntry(std::vector<std::shared_ptr<Node>> &new_path)
-// {
-
-//     EntryKey query_key;
-//     PathToKey(new_path, query_key);
-//     for(CacheEntry tmp_entry: cache_table) {
-//         if (tmp_entry.IsEqual(query_key)) {
-//             // printf("Find the key:\n");
-//             // ShowEntry(tmp_entry);
-//             return true;
-//         }
-//     }
-//     return false;
-// }
 
 bool CacheMILP::PathToKey(std::vector<std::shared_ptr<Node>> &path, double start_speed, EntryKey &key)
 {
@@ -174,6 +137,3 @@ bool CacheMILP::PathToKey(std::vector<std::shared_ptr<Node>> &path, double start
     }
     return false;
 }
-
-
-// std::vector<CacheEntry> cache_table;

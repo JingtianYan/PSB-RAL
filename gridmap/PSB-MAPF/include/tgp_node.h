@@ -3,7 +3,6 @@
  * 
  * Kinodynamic constraints isrepresented as Delta in each node.
  * 
- * TODO: add more details
 */
 #pragma once
 

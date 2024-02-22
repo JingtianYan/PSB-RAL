@@ -1,8 +1,0 @@
-runtime, #high-level expanded,#high-level generated,#low-level expanded,#low-level generated,solution cost,root g value,runtime of detecting conflicts,runtime of building constraint tables,runtime of building CATs,runtime of path finding,runtime of generating child nodes,preprocessing runtime,instance name
-0.617602,0,0,0,0,1134.53,1064.81,0,0,0,0,0,0,PBS-LP
-0.205163,0,0,0,0,778.291,732.834,0,0,0,0,0,0,PBS-LP
-0.208882,0,0,0,0,778.291,732.834,0,0,0,0,0,0,PBS-LP
-0.206738,0,0,0,0,778.291,732.834,0,0,0,0,0,0,PBS-LP
-1.37471,0,0,0,0,754.666,560.294,0,0,0,0,0,0,PBS-LP
-1.33934,0,0,0,0,754.666,560.294,0,0,0,0,0,0,PBS-LP
-0.978721,0,0,0,0,595.762,456.604,0,0,0,0,0,0,PBS-LP

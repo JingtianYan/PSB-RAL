@@ -1,0 +1,2 @@
+runtime, #high-level expanded,#high-level generated,#low-level expanded,#low-level generated,solution cost,root g value,delay,runtime of detecting conflicts,runtime of building constraint tables,runtime of building CATs,runtime of path finding,runtime of generating child nodes,preprocessing runtime,instance name
+0.0897202,0,0,0,0,81.3,80.45,17.39,0,0,0,0,0,0,PBS-Bezier

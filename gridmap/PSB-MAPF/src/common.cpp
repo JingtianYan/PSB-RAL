@@ -4,7 +4,6 @@ std::ostream& operator<<(std::ostream& os, const Path& path)
 {
 	for (const auto& state : path)
 	{
-		// os << state.location << "(" << state.is_single() << "),";
 		os << state.location << "->";
 	}
 	return os;

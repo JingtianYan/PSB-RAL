@@ -92,27 +92,16 @@ bool PBS::UpdatePlan(PTNode& node, int index)
 					break;
 				}
 				for(auto it3 = node.plan[*it].begin(); it3 != node.plan[*it].end(); ++it3){
-					//it2 is the path entries of the agent it
-
 					for(auto it4 = node.plan[*it2].begin(); it4 != node.plan[*it2].end(); ++it4){
-						//it3 is the path entries of the agent index
-
 						if( instance_ptr->isSamePoint(it3->conflict_point, it4->conflict_point)){
 							if(!(it3->leaving_time_tail - it4->arrival_time < EPSILON) && !(it4->leaving_time_tail - it3->arrival_time < EPSILON)){
 								ReservationTable rt(instance_ptr->getNumOfVertices());
 								std::set<int> rtp;
 								node.getRTP(rtp, *it);;
 								node.getRTFromP(*instance_ptr, rt, rtp, *it, trajectoryToAgent);
-								// std::cout << "In func 1!" << std::endl;
 
 								Path path = sipp_ptr->run(*it, rt, cached_milp_ptr,node.optimal_T[*it], node.start_time[*it],
 									node.control_points[*it]);
-								// printf("All control points for %d in PBS1 : ", *it);
-								// for (double point: node.control_points[*it]){
-								// 	std::cout << point << ";";
-								// }
-								// std::cout << std::endl;
-								// std::cout << "In func 2!" << std::endl;
 								if(path.empty()) return false;
 								node.plan[*it] = path;
 
@@ -157,17 +146,9 @@ bool PBS::UpdatePlan(PTNode& node, int index)
 			ReservationTable rt(instance_ptr->getNumOfVertices());
 			std::set<int> rtp;
 			node.getRTP(rtp, *it);
-			// std::cout << "In func 3!" << std::endl;
 			node.getRTFromP(*instance_ptr, rt, rtp, *it, trajectoryToAgent);
-			// std::cout << "In func 4!" << std::endl;
 			Path path = sipp_ptr->run(*it, rt, cached_milp_ptr,node.optimal_T[*it], node.start_time[*it],
 										node.control_points[*it]);
-			// printf("All control points for %d in PBS2 : ", *it);
-			// for (double point: node.control_points[*it]){
-			// 	std::cout << point << ";";
-			// }
-			// std::cout << std::endl;
-			// std::cout << "In func 5!" << std::endl;
 			if(path.empty()) return false;
 			node.plan[index] = path;
 			replanned = true;
@@ -195,7 +176,6 @@ bool PBS::UpdatePlan(PTNode& node, int index)
 				std::cout <<"agent " <<*it <<'\n';
 				printPath(path);
 				exit(-1);
-				return false;
 			}
 		}
 	}
@@ -217,7 +197,6 @@ bool PBS::run(const string& outputFileName)
     std::map<int, std::set<int>> priority;
     initializePriority(priority);
 
-    // printPriority(priority);
 	std::vector<double> init_optimal_T;
 	std::vector<double> init_start_time;
 	std::vector<std::vector<double>> init_control_points;
@@ -237,12 +216,10 @@ bool PBS::run(const string& outputFileName)
 
 	int test = 0;
 	while (POStack.size() != 0){
-		// printf("\n[INFO] Run PBS new round!\n\n");
 		PTNode N = POStack.top();
 		POStack.pop();
 
 		std::tuple<int, int, int> C = N.getFirstCollision(*instance_ptr);
-		// printf("collision from %d to %d, at %d\n", get<0> (C), get<1> (C), get<2> (C));
 		// No colision founded return the result
 		if(std::get<0> (C) == -1){
 			N.writeToFile(*instance_ptr, outputFileName);

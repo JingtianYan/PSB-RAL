@@ -35,19 +35,6 @@ long double BernsteinPolynomial::ChooseNFromR(int n, int r)
     long double result = tgamma(n+1)/(tgamma(r+1)*tgamma(n-r+1));
     return result;
 }
-// long double BernsteinPolynomial::ChooseNFromR(int n, int k)
-// {
-//     if (k > n) return 0;
-//     if (k * 2 > n) k = n-k;
-//     if (k == 0) return 1;
-
-//     long double result = n;
-//     for( int i = 2; i <= k; ++i ) {
-//         result *= (n-i+1);
-//         result /= i;
-//     }
-//     return result;
-// }
 
 /**
  * Base function of Bernstein Polynomial
@@ -99,11 +86,6 @@ double BernsteinPolynomial::GetVal(double t, std::vector<double>& control_points
 */
 BernsteinPolynomial BernsteinPolynomial::Derivative()
 {
-    // std::vector<double> deriv_control_points;
-    // for (int i = 0; i < N; i++){
-    //     double tmp_control_point = ((control_points[i+1] - control_points[i]) * N) / T;
-    //     deriv_control_points.push_back(tmp_control_point);
-    // }
     BernDeriv tmp_deriv;
     for (int i = 0; i < N; i++){
         // control_points[i+1] - control_points[i]
@@ -111,13 +93,6 @@ BernsteinPolynomial BernsteinPolynomial::Derivative()
         tmp_idx_vec.insert(tmp_idx_vec.end(), control_points_deriv.orignal_idx[i].begin(), control_points_deriv.orignal_idx[i].end());
         tmp_idx_vec.insert(tmp_idx_vec.end(), control_points_deriv.orignal_idx[i+1].begin(), control_points_deriv.orignal_idx[i+1].end());
         tmp_deriv.orignal_idx.push_back(tmp_idx_vec);
-
-        // std::vector<int> tmp_sign_vec;
-        // tmp_sign_vec.insert(tmp_sign_vec.end(), control_points_deriv.sign_idx[i].begin(), control_points_deriv.sign_idx[i].end());
-        // for (int tmp_sign: control_points_deriv.sign_idx[i+1]) {
-        //     tmp_sign_vec.push_back(-tmp_sign);
-        // }
-        // tmp_deriv.sign_idx.push_back(tmp_sign_vec);
         std::vector<int> tmp_sign_vec;
         for (int tmp_sign: control_points_deriv.sign_idx[i]) {
             tmp_sign_vec.push_back(-tmp_sign);

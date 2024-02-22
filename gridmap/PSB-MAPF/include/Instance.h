@@ -33,27 +33,14 @@ struct Edge
 struct Node
 {
     int current_point;
-    // int next_point;
-    // int previous_point;
-    
     double arrival_time_min; // arrival time of the head of the vehicle
     double arrival_time_max; // arrival time of the head of the vehicle
-    
     double cost_min;
 	double g = 0;      // 
 	double f = 0;      // f = h + g;
-	double h = 0;      // 
-	// int color = 1;  // marking the point to see whether it was visited or not
-
+	double h = 0;      //
     int interval_index;
-    // double interval_t_min;
-    // double interval_t_max;
-
-    // int index;
     std::shared_ptr<Node> parent;
-
-    // int parent_index_1;
-    // int parent_index_2;
 };
 
 typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS, Vertex, Edge> searchGraph_t;
@@ -64,15 +51,10 @@ struct Agent
     int id = -1;
     int start_location = -1;
     int goal_location = -1;
-    // int importance;
 	double v_min = 0.000001;
     double v_max = 2.0;
     double a_min = -0.5;
     double a_max = 0.5;
-	// double v_min = 0.000001;
-    // double v_max = 1.0;
-    // double a_min = -1.0;
-    // double a_max = 1.0;
 	double length = 0.4; // length of the vehicle
     double earliest_start_time = 0.0;
     double init_velocity = 0.0;
@@ -203,7 +185,6 @@ public:
 
 
 private:
-	// int moves_offset[MOVE_COUNT];
 	vector<bool> my_map;
 	string map_fname;
 	string agent_fname;
@@ -211,9 +192,6 @@ private:
 	int num_of_agents = 0;
 	ReservationTable raw_rv_tbl;
 
-//   vector<int> start_locations;
-//   vector<int> goal_locations;
-	
 private:
 	bool loadMap();
 	void printMap() const;
@@ -229,8 +207,5 @@ private:
 
 	int randomWalk(int loc, int steps) const;
 
-
-	// Class  SingleAgentSolver can access private members of Node
-	// friend class SingleAgentSolver;
 };
 

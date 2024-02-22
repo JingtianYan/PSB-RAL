@@ -38,5 +38,4 @@ public:
 private:
     int N;
     double T;
-    // std::vector<double> control_points;
 };

@@ -10,10 +10,35 @@ PTNode::PTNode(vector<Path> pl,
 	plan = pl;
 	priority = pr;
 	bezier_solution = solution;
-	// for(int i = 0; i < pl.size(); i++){
-	// 	init_drift.push_back(0);
-	// 	control_points.push_back(std::vector<double> {});
-	// }
+}
+
+bool PTNode::checkSolution(Instance& instance){
+    std::pair<int, int> result(-1, -1);
+    ReservationTable rt_table(instance.GetNumOfVertices());
+    std::set<int> s;
+    for(int i = 0; i < (signed) plan.size();++i) s.insert(i);
+//    getRTFromP(rt_table, s);
+    getWindowRTFromP(instance, rt_table, s);
+    for (size_t agent_id = 0; agent_id < plan.size(); agent_id++) {
+        int conflict_id = checkValid(rt_table, agent_id);
+        if (conflict_id != -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int PTNode::checkValid(ReservationTable& rt, int agent_id){
+    for (auto& path_entry: plan[agent_id]) {
+        for (auto& rt_interval: rt[path_entry.location]) {
+            if (rt_interval.agent_id == agent_id) continue;
+            if(path_entry.leaving_time_tail - rt_interval.t_min >= EPSILON and
+               rt_interval.t_max - path_entry.arrival_time >= EPSILON) {
+                return rt_interval.agent_id;
+            }
+        }
+    }
+    return -1;
 }
 
 
@@ -41,19 +66,31 @@ void PTNode::writeToFile(Instance& instance, const string& file_name)
 			<< ";" << instance.agents[i].length \
 			<< ";" << bezier_solution[i].optimal_T \
 			<< ";" << instance.agents[i].earliest_start_time << ";";
-		// std::cout << "All control points: ";
 		for (double tmp_point : bezier_solution[i].control_points){
-			// std::cout << tmp_point<< ", ";
 			outfile << tmp_point << ", ";
 		}
 		outfile << "; ";
 		for (auto tmp_node : plan[i]) {
 			outfile << tmp_node.location << ", ";
 		}
-		// std::cout << std::endl;
 		outfile << '\n';
 	}
 	outfile.close();	
+}
+
+bool PTNode::CheckCollision(int agent_first, int agent_second)
+{
+    for(auto first_agent_node = plan[agent_first].begin(); first_agent_node != plan[agent_first].end(); ++first_agent_node){
+        for (auto second_agent_node = plan[agent_second].begin(); second_agent_node != plan[agent_second].end(); ++second_agent_node) {
+            if( first_agent_node->location == second_agent_node->location){
+                if(first_agent_node->leaving_time_tail - second_agent_node->arrival_time >= EPSILON &&
+                   second_agent_node->leaving_time_tail - first_agent_node->arrival_time >= EPSILON) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
 
 /***
@@ -76,8 +113,7 @@ void PTNode::topologicalSortUtil(int v, bool visited[], std::list<int>& List)
             topologicalSortUtil(*it, visited, List);
 		}
 	}
-        
- 
+
     // Push current vertex to stack
     // which stores result priority
     List.push_back(v);
@@ -249,22 +285,6 @@ void PTNode::printPriorityMap()
 	}
 }
 
-/*
-void PTNode::getRT(ReservationTable &rt, int index){
-	for (int i = 0; i < plan.size(); ++i){
-		if(priority[i].find(index) != priority[i].end()){
-			for(auto it = plan[i].begin(); it != plan[i].end(); ++it){
-				TimeInterval newTI;
-				newTI.t_max = it->leaving_time_tail;
-				newTI.t_min = it->arrival_time;
-				newTI.agent_id = i;
-				rt[it->vertex].push_back(newTI);
-			}
-			getRT(rt, i);
-		}
-	}
-}*/
-
 /**
  * Set the reservation table for each index
  * 
@@ -282,78 +302,63 @@ void PTNode::getRTP(std::set<int> &p, int index){
 }
 
 /**
- * 
+ * @brief Get the reservation table given the agents priority
+ *
+ * @param p The agent with higher priority
+ * @param[out] rt The reservation table
 */
+void PTNode::getRTFromP(ReservationTable& rt, std::set<int>& p){
+    for(int agent_id: p){
+        insertPathToRT(rt, agent_id);
+    }
+}
+
+void PTNode::insertPathToRT(ReservationTable& rt, int agent_id)
+{
+    for(auto it2 = plan[agent_id].begin(); it2 != plan[agent_id].end(); ++it2){
+        TimeInterval newTI;
+        newTI.t_max = it2->leaving_time_tail;
+        newTI.t_min = it2->arrival_time;
+        newTI.agent_id = agent_id;
+        rt[it2->location].push_back(newTI);
+    }
+}
+
 void PTNode::getRTFromP(Instance& instance , ReservationTable& rt, std::set<int> p){
-	// std::cout<<"running getRTFromP\n";
 	for(auto it = p.begin(); it != p.end(); ++it){
 		for(auto it2 = plan[*it].begin(); it2 != plan[*it].end(); ++it2){
-			//plan: vector<vector<pathentry>>
 			TimeInterval newTI;
-			
-			// std::vector<int> CPs = instance.getConflictPoints(it2->conflict_point);
 			newTI.t_max = it2->leaving_time_tail;
 			newTI.t_min = it2->arrival_time;
 			newTI.agent_id = *it;
-			if (DEBUG_PTNODE) {
-				printf("Add entry for agent %d at location %d, interval %f to %f\n", 
-				*it, it2->location, it2->arrival_time, it2->leaving_time_tail);
-			}
 			rt[it2->location].push_back(newTI);
-			//std::cout << it2->conflict_point << " conflict with ";
-			// for(auto it3 = CPs.begin(); it3 != CPs.end(); ++it3){
-			// 	rt[*it3].push_back(newTI);
-			// }
 		}
 	}
-	// std::cout<<"Finish getRTFromP\n";
 }
 
-/**
- * 
-*/
 void PTNode::getWindowRTFromP(Instance& instance , ReservationTable& rt, std::set<int>& p){
 	InsertPreviousPath(instance, rt);
 	for(auto it = p.begin(); it != p.end(); ++it){
 		for(auto it2 = plan[*it].begin(); it2 != plan[*it].end(); ++it2){
 			if (it2->arrival_time < WINDOWS_SIZE) {
-				//plan: vector<vector<pathentry>>
 				TimeInterval newTI;
-				
-				// std::vector<int> CPs = instance.getConflictPoints(it2->conflict_point);
-				newTI.t_max = min(it2->leaving_time_tail, WINDOWS_SIZE);
+                newTI.t_max = min(it2->leaving_time_tail, WINDOWS_SIZE);
 				newTI.t_min = it2->arrival_time;
 				newTI.agent_id = *it;
-				if (DEBUG_PTNODE) {
-					printf("Add entry for agent %d at location %d, interval %f to %f\n", 
-					*it, it2->location, it2->arrival_time, it2->leaving_time_tail);
-				}
 				rt[it2->location].push_back(newTI);
 			}
-			//std::cout << it2->conflict_point << " conflict with ";
-			// for(auto it3 = CPs.begin(); it3 != CPs.end(); ++it3){
-			// 	rt[*it3].push_back(newTI);
-			// }
 		}
 	}
-	// std::cout<<"Finish getRTFromP\n";
 }
 
 void PTNode::InsertPreviousPath(Instance& instance, ReservationTable& rt)
 {
-	if (DEBUG_PTNODE)
-		printf("Start insert previous path\n");
 	for (Agent tmp_agent : instance.agents) {
 		if (tmp_agent.is_solved) {
 			continue;
 		}
 		for (PathEntry tmp_entry : tmp_agent.previous_path) {
-			if (DEBUG_PTNODE) {
-				printf("Add entry for agent %d at location %d, interval %f to %f\n", 
-				tmp_agent.id, tmp_entry.location, tmp_entry.arrival_time, tmp_entry.leaving_time_tail);
-			}
 			TimeInterval newTI;
-			// std::vector<int> CPs = instance.getConflictPoints(it2->conflict_point);
 			newTI.t_max = tmp_entry.leaving_time_tail;
 			newTI.t_min = tmp_entry.arrival_time;
 			newTI.agent_id = tmp_agent.id;
@@ -361,8 +366,6 @@ void PTNode::InsertPreviousPath(Instance& instance, ReservationTable& rt)
 			
 		}
 	}
-	if (DEBUG_PTNODE)
-		printf("Finish insert previous path\n");
 }
 
 void PTNode::InsertInitLocation(int agent_id, Instance& instance, ReservationTable& rt)
@@ -373,161 +376,9 @@ void PTNode::InsertInitLocation(int agent_id, Instance& instance, ReservationTab
 		}
 		// avoid take the initial position
 		TimeInterval newTI;
-		// std::vector<int> CPs = instance.getConflictPoints(it2->conflict_point);
 		newTI.t_max = tmp_agent.earliest_start_time + 2.5;
 		newTI.t_min = tmp_agent.earliest_start_time;
 		newTI.agent_id = tmp_agent.id;
 		rt[tmp_agent.start_location].push_back(newTI);
 	}
 }
-
-// void PTNode::getRTFromP(Instance& instance, 
-// 	ReservationTable& rt, 
-// 	// std::set<int> p, 
-// 	int index, 
-// 	std::map<int, std::map<int,std::vector<int> > >& ta)
-// {
-// 	vector<int> same = ta[instance.agents[index].trajectory[0]]
-// 							[instance.agents[index].trajectory[instance.agents[index].trajectory.size()-1]];
-// 	//TODO: change type
-//     for(int i = 0; i < (int) same.size(); ++i){
-//         if(same[i] != index){
-//             if (instance.getEarliestStartTime(same[i]) < instance.getEarliestStartTime(index)){
-//                 // std::cout <<"agent: " << index << "- pred: " << same[i] << "   ===   \n";
-// 				//TODO: change type
-//                 for(int i2 = 0; i2 < (int) plan[same[i]].size(); ++i2){
-//                     TimeInterval newTI;
-//                     std::vector<int> CPs = instance.getConflictPoints(plan[same[i]][i2].conflict_point);
-//                     newTI.t_max = plan[same[i]][i2].leaving_time_tail;
-//                     newTI.t_min = 0;
-//                     newTI.agent_id = same[i];
-//                     rt[plan[same[i]][i2].conflict_point].push_back(newTI);
-//                     //std::cout << it2->conflict_point << " conflict with ";
-//                     // std::cout  << newTI.t_min << " " << newTI.t_max << " " << newTI.agent_id << "===";
-//                     for(auto it3 = CPs.begin(); it3 != CPs.end(); ++it3)
-//                         rt[*it3].push_back(newTI);
-
-//                     // std::cout << plan[same[i]][i2].conflict_point << ":" << CPs[0] << "----";
-//                 }
-//                 // std::cout << "\n";
-                
-//             }
-
-//         }
-//     }
-
-
-//     // get vehicles having same entry point only
-//     int conflictPointID = instance.getConflictPoints(instance.agents[index].trajectory[0])[0];
-//     for(auto it5 = ta.begin(); it5 != ta.end(); ++it5){
-//         if (conflictPointID == it5->first){
-//             // std::cout <<  conflictPointID << "--" << it5->first << std::endl;
-//             for(auto it6 = it5->second.begin(); it6 != it5->second.end(); ++it6){
-//                 for(auto it7 = it6->second.begin(); it7 != it6->second.end(); ++it7){
-//                     if (instance.getEarliestStartTime(*it7) < instance.getEarliestStartTime(index)){
-//                         // std::cout << "same entry point agent: " << *it7 << std::endl;
-
-//                         // if vehicle is already having a plan
-//                         if (plan[*it7].size() > 0){
-//                             TimeInterval newTI;
-//                             std::vector<int> CPs = instance.getConflictPoints(plan[*it7][0].conflict_point);
-//                             newTI.t_max = plan[*it7][0].leaving_time_tail;
-//                             newTI.t_min = 0;
-//                             newTI.agent_id = *it7;
-//                             rt[plan[*it7][0].conflict_point].push_back(newTI);
-//                             //std::cout << it2->conflict_point << " conflict with ";
-//                             // std::cout  << newTI.t_min << " " << newTI.t_max << " " << newTI.agent_id << "===";
-//                             // std::cout << plan[*it7][0].conflict_point << ":" << CPs[0] << "----\n";
-//                             for(auto it8 = CPs.begin(); it8 != CPs.end(); ++it8)
-//                                 rt[*it8].push_back(newTI);
-                            
-//                         }
-//                         else{
-//                             TimeInterval newTI;
-//                             std::vector<int> CPs = instance.getConflictPoints(instance.getAgents()[*it7].start_location);
-//                             newTI.t_max = instance.getAgents()[*it7].earliest_start_time;
-//                             newTI.t_min = 0;
-//                             newTI.agent_id = *it7;
-//                             //std::cout << it2->conflict_point << " conflict with ";
-//                             // std::cout  << newTI.t_min << " " << newTI.t_max << " " << newTI.agent_id << "===";
-//                             // std::cout << instance.getAgents()[*it7].start_location << ":" << CPs[0] << "----\n";
-//                             for(auto it8 = CPs.begin(); it8 != CPs.end(); ++it8)
-//                                 rt[*it8].push_back(newTI);
-
-//                         }
-//                     }
-//                 }
-//                 // std::cout << "\n";
-//             }
-            
-//         }
-//     }
-    
-
-// 	// for(int i = 1; i < same.size(); ++i){
-//     //     // std::cout << "same: " << index << "  " << same[i] << "  " << same[i-1] << "\n";
-// 	// 	if(same[i] == index){
-//     //         pred = same[i - 1];
-            
-//     //     } 
-//     // }
-
-
-// 	// if(pred != -1){
-//     //     std::cout <<"agent: " << index << "- pred: " << pred << "   ===   \n";
-// 	// 	for(int i = 0; i < plan[pred].size(); ++i){
-// 	// 		TimeInterval newTI;
-// 	// 		std::vector<int> CPs = instance.getConflictPoints(plan[pred][i].conflict_point);
-// 	// 		newTI.t_max = plan[pred][i].leaving_time_tail;
-// 	// 		newTI.t_min = 0;
-// 	// 		newTI.agent_id = pred;
-// 	// 		rt[plan[pred][i].conflict_point].push_back(newTI);
-// 	// 		//std::cout << it2->conflict_point << " conflict with ";
-//     //         std::cout  << newTI.t_min << " " << newTI.t_max << " " << newTI.agent_id << "===";
-// 	// 		for(auto it3 = CPs.begin(); it3 != CPs.end(); ++it3)
-// 	// 			rt[*it3].push_back(newTI);
-
-//     //         std::cout << plan[pred][i].conflict_point << ":" << CPs[0] << "----";
-// 	// 	}
-//     //     std::cout << "\n";
-// 	// }
-	
-
-
-// 	//std::cout<<"running getRTFromP\n";
-//     // Vehicle could not arrive before the Earliest arrival time
-// 	TimeInterval beginTI;
-// 	beginTI.t_min = 0;
-// 	beginTI.t_max = instance.getEarliestStartTime(index);
-// 	beginTI.agent_id = index;
-// 	rt[instance.getStartCP(index)].push_back(beginTI);
-// 	std::vector<int> startCPs = instance.getConflictPoints(instance.getStartCP(index));
-// 	for(auto it = startCPs.begin(); it != startCPs.end(); ++it)
-// 		rt[*it].push_back(beginTI);
-
-
-//     // std::cout << "RTP: \n" ;
-// 	for(auto it = p.begin(); it != p.end(); ++it){
-//         // std::cout << *it << ": ";
-// 		for(auto it2 = plan[*it].begin(); it2 != plan[*it].end(); ++it2){
-// 			//plan: vector<vector<pathentry>>
-// 				TimeInterval newTI;
-// 				std::vector<int> CPs = instance.getConflictPoints(it2->conflict_point);
-// 				newTI.t_max = it2->leaving_time_tail;
-// 				newTI.t_min = it2->arrival_time;
-// 				newTI.agent_id = *it;
-// 				rt[it2->conflict_point].push_back(newTI);
-//                 // std::cout << newTI.t_min << " " << newTI.t_max << " " << newTI.agent_id << ", ===";
-// 				//std::cout << it2->conflict_point << " conflict with ";
-// 				for(auto it3 = CPs.begin(); it3 != CPs.end(); ++it3)
-// 					rt[*it3].push_back(newTI);
-                
-//                 // std::cout << "    " << *it << ":" << it2->conflict_point << ":" << CPs[0] << "----";
-// 		}
-//         // std::cout << "\n";
-
-        
-// 	}
-//     // std::cout << "\n\n";
-// 	//std::cout<<"rtsize: " << rt.size() << "\n";
-// }

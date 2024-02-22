@@ -34,11 +34,6 @@ bool CacheMILP::InsertEntry(std::vector<Node> &new_path)
     new_entry.traj_length = new_path.size();
     PathToKey(new_path, new_entry.keys);
     cache_table.push_back(new_entry);
-    // for (int i = 0; i < new_path.size(); i++) {
-    //     ;
-    // }
-    // std::pair<double, double> val;
-    // new_entry.keys.push_back(val);
     return true;
 }
 
@@ -63,8 +58,6 @@ bool CacheMILP::FindEntry(std::vector<Node> &new_path)
     PathToKey(new_path, query_key);
     for(CacheEntry tmp_entry: cache_table) {
         if (tmp_entry.IsWithinKey(query_key)) {
-            // printf("Find the key:\n");
-            // ShowEntry(tmp_entry);
             return true;
         }
     }
@@ -79,6 +72,3 @@ bool CacheMILP::PathToKey(std::vector<Node> &path, EntryKey &key)
     }
     return false;
 }
-
-
-// std::vector<CacheEntry> cache_table;

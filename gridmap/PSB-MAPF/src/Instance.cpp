@@ -26,7 +26,6 @@ Instance::Instance(const string& in_map_fname, const string& in_agent_fname,
 			exit(-1);
 		}
 	}
-	// printMap();
 	GetRawReservationTable();
 	succ = loadAgents();
 	if (!succ)
@@ -46,9 +45,6 @@ Instance::Instance(const string& in_map_fname, const string& in_agent_fname,
 	{
 		agents[i].id = i;
 	}
-
-	// printAgents();
-
 }
 
 void Instance::GetRawReservationTable()
@@ -114,11 +110,9 @@ void Instance::generateRandomAgents(int warehouse_width)
 				continue;
 				
 			// update start
-			// start_locations[k] = start;
 			starts[start] = true;
 
 			// find goal
-			// bool flag = false;
 			int goal = randomWalk(start, RANDOM_WALK_STEPS);
 			while (goals[goal])
 				goal = randomWalk(goal, 1);
@@ -235,13 +229,6 @@ void Instance::generateConnectedRandomGrid(int rows, int cols, int obstacles)
 	num_of_cols = cols + 2;
 	map_size = num_of_rows * num_of_cols;
 	my_map.resize(map_size, false);
-	// Possible moves [WAIT, NORTH, EAST, SOUTH, WEST]
-	/*moves_offset[Instance::valid_moves_t::WAIT_MOVE] = 0;
-	moves_offset[Instance::valid_moves_t::NORTH] = -num_of_cols;
-	moves_offset[Instance::valid_moves_t::EAST] = 1;
-	moves_offset[Instance::valid_moves_t::SOUTH] = num_of_cols;
-	moves_offset[Instance::valid_moves_t::WEST] = -1;*/
-
 	// add padding
 	i = 0;
 	for (j = 0; j < num_of_cols; j++)

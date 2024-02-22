@@ -1,16 +1,18 @@
-// This file is the implementation of PBS
-// initialize the PBS tree, run the PBS algorithm for collision node
-// call sipp for path planning
+/**
+ * This file is the implementation of PBS
+ *
+ * initialize the PBS tree, run the PBS algorithm for collision node
+ * call SIPP for path planning.
+ */
+
 #pragma once
 #include "SIPP.h"
-#include "sipp-ip.h"
 #include "PTNode.h"
 #include "milp_cache.h"
 #include <cstddef>
 #include <cstdint>
 #include <memory>
 
-// #define DEBUG_PBS 1
 
 #ifdef DEBUG_PBS 
 #define DEBUG(x) x
@@ -23,20 +25,14 @@
 extern const double EPSILON;
 
 
-
 class PBS
 {
 public:
     PBS(std::shared_ptr<Instance> instance, std::string single_agent_solver_name, double cutoff_time);
-    bool run(const string&, bool& all_agents_solved);
-    bool UpdatePlan(PTNode&, int);
-    void initializeAgents();
-    void initializePriority(std::map<int, std::set<int> >&);
+    bool solve(const string& outputFileName, bool& all_agent_solved);
     void printPath(Path);
     void printRT(ReservationTable);
-    void printPriority(std::map<int, std::set<int> >);
-    bool SolveSingleAgentSIPP_IP(PTNode& node, int agent_id);
-    bool SolveSingleAgentBezier(PTNode& node, int agent_id);
+    bool SolveSingleAgentBezier(PTNode& node, std::set<int>& rtp, int agent_id);
     bool checkValid(ReservationTable& rt, Path& path, int agent);
     bool CheckCollision(PTNode& node, int agent_first, int agent_second);
     void saveResults(int all_agents_solved, const string& fileName, const string& instanceName) const;
@@ -45,18 +41,41 @@ public:
     {
         return single_agent_solver;
     }
-    bool GetNextPreviousPath();
     void printValidRT(ReservationTable rt);
     void updateCost();
+
+private:
+    bool initRootNode(std::shared_ptr<PTNode>& root_node);
+    inline bool isTerminate(std::shared_ptr<PTNode> curr_n);
+    std::shared_ptr<PTNode> selectNode();
+    shared_ptr<Conflict> chooseConflict(const PTNode &node);
+    void pushNodes(const std::shared_ptr<PTNode>& n1, const std::shared_ptr<PTNode>& n2);
+    inline void pushNode(const std::shared_ptr<PTNode>& node);
+    bool generateChild(int child_id, std::shared_ptr<PTNode> parent, int low, int high);
+    void printPriorityGraph() const;
+    void topologicalSort(list<int>& stack);
+    void topologicalSortUtil(int v, vector<bool> & visited, list<int> & stack);
+    void getHigherPriorityAgents(const list<int>::reverse_iterator & p1, set<int>& agents);
+    void getLowerPriorityAgents(const list<int>::iterator & p1, set<int>& agents);
+    bool hasHigherPriority(int low, int high) const; // return true if agent low is lower than agent high
+    void recursivePrint(const std::shared_ptr<PTNode>& curr_node);
+
     
 public:
     std::shared_ptr<Instance> instance_ptr;
     std::shared_ptr<SIPP> sipp_ptr = NULL;
-    std::shared_ptr<SIPP_IP> sipp_ip_ptr = NULL;
     std::vector<Agent> arrivingVehicles;
-    // std::map<int, std::map<int,std::vector<int>>> trajectoryToAgent;
     std::shared_ptr<CacheMILP> cached_milp_ptr;
     std::string single_agent_solver;
+
+private:
+    clock_t global_start_t;
+    double time_limit;
+    int screen=0;
+    std::stack<std::shared_ptr<PTNode>> open_list;
+    vector<vector<bool>> priority_graph;
+    list<int> ordered_agents;
+    int num_of_agents;
     
 
 private:

@@ -1,9 +1,12 @@
 # Multi-Agent Motion Planning with Bézier Curve Optimization under Kinodynamic Constraints
 
 ## Note
-The repository is developed and tested in Ubuntu 20.04
+This repository contains codes for
+*Yan, J. and Li, J., 2024. Multi-Agent Motion Planning With Bézier Curve Optimization Under Kinodynamic Constraints. IEEE Robotics and Automation Letters.*
+The repository is developed and tested in Ubuntu 20.04.
+
 ## General structure
-The project consists two folders, namely `Intersection` and `gridmap`. The `Intersection` folders contains three methods (PSB and two baseline methods). The `gridmap` folder contains baseline method (PBS+SIPP-IP) and PSB.
+The project consists two folders, namely `Intersection` and `gridmap`. The `Intersection` folders contains the implementation of PSB for traffic intersection coordination problem. The `gridmap` folder contains the implementation of PSB for obstacle rich grid map navigation domain.
 In each method folder `src` `include` and `data` folders are included.
 
 ## Requirements
@@ -34,7 +37,13 @@ make
 ./AIMPSB -k 10 -m ./data/intro_graph_3.json -a ./data/500vphpl/vehicleArrival_500vphpl_random1.json -c vehicle500vphpl_random1.csv
 ```
 
-<!-- To compile our baseline Algorithms (MILP in ```src/``` and MILP-FCFS in ```MILP-FCFS/```), please follow the same instructions in section PSL Algorithm above. Again you Boost and Cplex are required libraries. -->
+To run the PSB in the grid map domain
+```shell script
+cd gridmap/PSB-MAPF
+cmake .
+make
+./MAPFPSB -k 10 -m ./data/Boston_0_256/Boston_0_256.map -a ./data/Boston_0_256/scen-random/Boston_0_256-random-1.scen -c Boston_0_256-random-1-output.csv
+```
 
 - m: the map file from the MAPF benchmark
 - a: the scenario file from the MAPF benchmark

@@ -34,19 +34,14 @@ int main(int argc, char** argv)
 		("output,o", po::value<string>()->default_value("./output.txt"), "output file for schedule")
 		("statistic,c", po::value<string>()->default_value("./output.csv"), "output file for statistic result")
 
-		// ("outputPaths", po::value<string>(), "output file for paths")
 		("agentNum,k", po::value<int>()->default_value(3), "number of agents")
 		("agentIdx", po::value<string>()->default_value(""), "customize the indices of the agents (e.g., \"0,1\")")
 		("seed,d", po::value<int>()->default_value(0), "random seed")
 
 		("solver,s", po::value<string>()->default_value("bezier"), "single agent solver for PBS, choose from sipp-ip and bezier")
-		// ("solver,s", po::value<string>()->default_value("sipp-ip"), "single agent solver for PBS, choose from sipp-ip and bezier")
 
 
 		("cutoffTime,t", po::value<double>()->default_value(300), "cutoff time (seconds)")
-		// ("nodeLimit", po::value<int>()->default_value(MAX_NODES), "node limit")
-		// ("screen,s", po::value<int>()->default_value(1), "screen option (0: none; 1: results; 2:all)")
-		// ("stats", po::value<bool>()->default_value(false), "write to files some statistics")
 
 		// params for instance generators
 		("rows", po::value<int>()->default_value(0), "number of rows")
@@ -82,28 +77,18 @@ int main(int argc, char** argv)
 
 	srand(vm["seed"].as<int>());
 
-	// int runs = vm["restart"].as<int>();
-
-
 	//////////////////////////////////////////////////////////////////////
 	/// initialize the solver
     //////////////////////////////////////////////////////////////////////
-	// CBS cbs(instance, vm["sipp"].as<bool>(), vm["screen"].as<int>());
 	PBS pbs(instance_ptr, vm["solver"].as<string>(), vm["cutoffTime"].as<double>());
 	bool all_agents_solved = false;
 	auto global_start_time = Time::now();
 	while(!all_agents_solved) {
 		all_agents_solved = true;
-		// auto start_time = Time::now();
-		bool pbs_success = pbs.run(vm["output"].as<string>(), all_agents_solved);
+		bool pbs_success = pbs.solve(vm["output"].as<string>(), all_agents_solved);
 		if (!pbs_success) {
-			// printf("No valid solution!\n");
 			break;
 		}
-		// std::chrono::duration<float> run_time = Time::now() - start_time;
-		// printf("Time duration is: %f\n", run_time.count());
-		// exit(-1);
-		// all_agents_solved = true;
 		auto last_time = Time::now();
 		std::chrono::duration<float> duration_time = last_time - global_start_time;
 		if (duration_time.count() >= vm["cutoffTime"].as<double>()) {
@@ -113,8 +98,6 @@ int main(int argc, char** argv)
 	auto global_end_time = Time::now();
 	std::chrono::duration<float> global_run_time = global_end_time - global_start_time;
 	string traj_name = vm["agents"].as<string>();
-	// std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(run_time);
-	// printf("For traj: %s, with %d agents, Time duration is: %f\n", traj_name.c_str(), vm["agentNum"].as<int>(), global_run_time.count());
 	pbs.updateCost();
 	pbs.saveResults(all_agents_solved, vm["statistic"].as<string>(), vm["map"].as<string>());
 }
